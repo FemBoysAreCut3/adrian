@@ -1,0 +1,733 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CachyOS Hilfe</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070b09;
+            color: #e8fff0;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(7, 11, 9, 0.95);
+            border-bottom: 1px solid #123d25;
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4dff88;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #b8cfc0;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #4dff88;
+        }
+
+        /* MAIN */
+
+        main {
+            width: 86%;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 80px 0;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding: 7px 14px;
+            margin-bottom: 20px;
+
+            border: 1px solid #1e7a42;
+            border-radius: 50px;
+
+            color: #4dff88;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 span {
+            color: #4dff88;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #a9bdb0;
+            font-size: 19px;
+            margin-bottom: 30px;
+        }
+
+        .penguin {
+            font-size: 190px;
+            filter: drop-shadow(
+                0 0 30px rgba(77, 255, 136, 0.25)
+            );
+        }
+
+        /* BUTTON */
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 23px;
+
+            background: #4dff88;
+            color: #061009;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 10px 30px rgba(77, 255, 136, 0.25);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 90px 0;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #8da497;
+            margin-bottom: 40px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: #0c1410;
+
+            border: 1px solid #173523;
+            border-radius: 18px;
+
+            padding: 28px;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #4dff88;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #94aa9c;
+            margin-bottom: 20px;
+        }
+
+        /* CODE BOX */
+
+        .code {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            padding: 10px;
+
+            background: #050806;
+            border: 1px solid #183a25;
+            border-radius: 9px;
+        }
+
+        .code code {
+            color: #4dff88;
+            font-size: 13px;
+            overflow-x: auto;
+        }
+
+        .code button {
+            border: none;
+
+            padding: 7px 10px;
+
+            border-radius: 6px;
+
+            background: #173523;
+            color: #bfffd0;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+        }
+
+        .code button:hover {
+            background: #245d38;
+        }
+
+        /* TERMINAL */
+
+        .terminal-section {
+            text-align: center;
+        }
+
+        .terminal {
+            max-width: 800px;
+            margin: 35px auto 0;
+
+            overflow: hidden;
+
+            text-align: left;
+
+            background: #030504;
+            border: 1px solid #1b472b;
+            border-radius: 14px;
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .terminal-top {
+            display: flex;
+            gap: 7px;
+
+            padding: 13px;
+
+            background: #0d1510;
+        }
+
+        .terminal-top span {
+            width: 11px;
+            height: 11px;
+
+            border-radius: 50%;
+            background: #31543d;
+        }
+
+        .terminal pre {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        .terminal code {
+            color: #4dff88;
+            font-family: monospace;
+            font-size: 15px;
+        }
+
+        /* HELP */
+
+        .help {
+            text-align: center;
+
+            padding: 70px 30px;
+
+            background: linear-gradient(
+                135deg,
+                #0b1d12,
+                #07100b
+            );
+
+            border: 1px solid #173c25;
+            border-radius: 25px;
+
+            margin-bottom: 90px;
+        }
+
+        .help p {
+            color: #9cb2a3;
+            margin: 15px auto 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 40px 7%;
+
+            border-top: 1px solid #12351f;
+
+            color: #71877a;
+        }
+
+        footer strong {
+            color: #4dff88;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .penguin {
+                font-size: 120px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 34px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🐧 Linux Hilfe
+    </div>
+
+    <nav>
+        <a href="#start">Startseite</a>
+        <a href="#tipps">CachyOS-Tipps</a>
+        <a href="#pacman">Pacman</a>
+        <a href="#hilfe">Hilfe</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="start">
+
+        <div>
+
+            <span class="badge">
+                ARCH LINUX • CACHYOS
+            </span>
+
+            <h1>
+                CachyOS<br>
+                <span>Tipps & Hilfe</span>
+            </h1>
+
+            <p>
+                Einfache Anleitungen, Terminal-Befehle
+                und praktische Tipps für CachyOS.
+            </p>
+
+            <a class="button" href="#tipps">
+                Tipps entdecken
+            </a>
+
+        </div>
+
+        <div class="penguin">
+            🐧
+        </div>
+
+    </section>
+
+
+    <!-- TIPPS -->
+
+    <section id="tipps">
+
+        <h2>🔧 CachyOS-Tipps</h2>
+
+        <p class="subtitle">
+            Nützliche Befehle für dein CachyOS-System.
+        </p>
+
+
+        <div class="cards">
+
+            <!-- UPDATE -->
+
+            <article class="card">
+
+                <div class="icon">🔄</div>
+
+                <h3>
+                    System aktualisieren
+                </h3>
+
+                <p>
+                    Aktualisiere dein System und
+                    deine installierten Pakete.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        sudo pacman -Syu
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- INSTALL -->
+
+            <article class="card">
+
+                <div class="icon">📦</div>
+
+                <h3>
+                    Programm installieren
+                </h3>
+
+                <p>
+                    Installiere ein Paket direkt
+                    über Pacman.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        sudo pacman -S paketname
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- SEARCH -->
+
+            <article class="card">
+
+                <div class="icon">🔍</div>
+
+                <h3>
+                    Paket suchen
+                </h3>
+
+                <p>
+                    Suche nach verfügbaren Paketen
+                    in den Repositories.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        pacman -Ss suchbegriff
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- REMOVE -->
+
+            <article class="card">
+
+                <div class="icon">🗑️</div>
+
+                <h3>
+                    Paket entfernen
+                </h3>
+
+                <p>
+                    Entferne ein installiertes Paket.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        sudo pacman -R paketname
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- CACHE -->
+
+            <article class="card">
+
+                <div class="icon">🧹</div>
+
+                <h3>
+                    Cache aufräumen
+                </h3>
+
+                <p>
+                    Entferne alte Pakete aus
+                    dem Pacman-Cache.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        sudo pacman -Sc
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- FASTFETCH -->
+
+            <article class="card">
+
+                <div class="icon">💻</div>
+
+                <h3>
+                    Systeminformationen
+                </h3>
+
+                <p>
+                    Zeige Informationen über
+                    dein System an.
+                </p>
+
+                <div class="code">
+
+                    <code>
+                        fastfetch
+                    </code>
+
+                    <button onclick="copyCode(this)">
+                        Kopieren
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- TERMINAL -->
+
+    <section class="terminal-section" id="pacman">
+
+        <span class="badge">
+            TERMINAL
+        </span>
+
+        <h2>
+            🐧 Pacman-Grundlagen
+        </h2>
+
+
+        <div class="terminal">
+
+            <div class="terminal-top">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <pre><code>$ sudo pacman -Syu
+
+$ sudo pacman -S firefox
+
+$ pacman -Ss firefox
+
+$ sudo pacman -R firefox</code></pre>
+
+        </div>
+
+    </section>
+
+
+    <!-- HILFE -->
+
+    <section class="help" id="hilfe">
+
+        <h2>
+            ❓ Brauchst du Hilfe?
+        </h2>
+
+        <p>
+            Probleme mit CachyOS, Pacman, KDE,
+            Audio, Netzwerk oder anderen Linux-Themen?
+        </p>
+
+        <a class="button" href="mailto:hilfe@example.de">
+            📩 Support kontaktieren
+        </a>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+
+        <strong>
+            🐧 Linux Hilfe
+        </strong>
+
+        <p>
+            Deine Hilfe-Seite für
+            Arch Linux & CachyOS.
+        </p>
+
+    </div>
+
+    <p>
+        © 2026 Linux Hilfe
+    </p>
+
+</footer>
+
+
+<script>
+
+function copyCode(button) {
+
+    const code =
+        button.parentElement
+        .querySelector("code")
+        .innerText;
+
+    navigator.clipboard.writeText(code);
+
+    button.innerText = "✓ Kopiert";
+
+    setTimeout(() => {
+
+        button.innerText = "Kopieren";
+
+    }, 1500);
+
+}
+
+</script>
+
+</body>
+</html>
+```
